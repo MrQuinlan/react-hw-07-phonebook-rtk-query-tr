@@ -1,5 +1,4 @@
 import { configureStore } from '@reduxjs/toolkit';
-import { setupListeners } from '@reduxjs/toolkit/query';
 import { phoneBookAPI } from 'Service/ContactsAPI';
 
 import filterReducer from '../slices/filterSlice';
