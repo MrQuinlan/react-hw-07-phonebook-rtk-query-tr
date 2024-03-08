@@ -1,0 +1,21 @@
+import { configureStore } from '@reduxjs/toolkit';
+import { setupListeners } from '@reduxjs/toolkit/query';
+import { phoneBookAPI } from 'Service/ContactsAPI';
+
+import filterReducer from '../slices/filterSlice';
+
+const store = configureStore({
+  contacts: [],
+  filter: '',
+
+  reducer: {
+    [phoneBookAPI.reducerPath]: phoneBookAPI.reducer,
+    filter: filterReducer,
+  },
+  middleware: getDefaultMiddleware =>
+    getDefaultMiddleware().concat(phoneBookAPI.middleware),
+});
+
+// setupListeners(store.dispatch);
+
+export default store;
